@@ -183,6 +183,12 @@ namespace WebForms.Models
 
                 entity.Property(e => e.MailUserAccess).HasColumnName("mail_user_access");
 
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasColumnName("password")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.PositionId).HasColumnName("position_id");
 
                 entity.Property(e => e.Telephone)
