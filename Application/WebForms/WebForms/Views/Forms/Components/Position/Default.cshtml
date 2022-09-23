@@ -1,0 +1,8 @@
+﻿@model IEnumerable<WebForms.Models.Positions>
+<select class="form-control" id="IdPosition" name="IdPosition" required>
+    @foreach (var item in Model)
+    {
+        <option value="@item.PositionId">@item.PositionName</option>
+    }
+</select>
+

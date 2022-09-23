@@ -48,7 +48,7 @@ namespace WebForms.Models
         public string Cellphone { get; set; }
 
         [Required(ErrorMessage = "El número de telefono es obligatorio")]
-        [Display(Name = "Telefono")]
+        [Display(Name = "Telefono:*")]
         public string Telephone { get; set; }
 
         [Required(ErrorMessage = "El apellido es obligatorio")]

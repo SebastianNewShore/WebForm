@@ -5,6 +5,24 @@
 }
 
 <div class="container">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Message"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (TempData["MessageError"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["MessageError"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
     <div class="row">
         <div class="col-sm-12">
             <h3>Crear Empleado</h3>
@@ -12,87 +30,150 @@
     </div>
     <hr />
     <br />
-    <div class="row">
-        <form method="post" asp-action="Create">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h5>Usuario</h5>
+    <form method="post" asp-action="Index">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5>Información de Usuario</h5>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="CodeEmp" class="control-label"></label>
+                    <input asp-for="CodeEmp" value="xmxwebdemo2" type="text" class="form-control" readonly onmousedown="return false;" />
+                    <span asp-validation-for="CodeEmp" class="text-danger"></span>
                 </div>
             </div>
-            <br />
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label asp-for="CodeEmp" class="control-label"></label>
-                        <input asp-for="CodeEmp" type="text" class="form-control" required />
-                        <span asp-validation-for="CodeEmp" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label asp-for="UserEmp" class="control-label"></label>
-                        <input asp-for="UserEmp" type="text" class="form-control" required />
-                        <span asp-validation-for="UserEmp" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" type="text" class="form-control" required />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="UserEmp" class="control-label"></label>
+                    <input asp-for="UserEmp" type="text" class="form-control validateLength" minlength="6" maxlength="6" required />
+                    <span asp-validation-for="UserEmp" class="text-danger"></span>
                 </div>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-sm-12">
-                    <h5>Informacion Personal</h5>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" type="text" minlength="8" maxlength="8" class="form-control validateLength" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
             </div>
-            <br />
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label asp-for="FirstName" class="control-label"></label>
-                        <input asp-for="FirstName" type="text" class="form-control" required />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Gender" class="control-label"></label>
-                        <select class="form-control" id="IdGender" name="IdGender" required>
-                            <option value="0">Femenino</option>
-                            <option value="1">Masculino</option>
-                        </select>
-                        <span asp-validation-for="Gender" class="text-danger"></span>
-                    </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-12">
+                <h5>Información Personal</h5>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" type="text" class="form-control validateLength" minlength="5" maxlength="15" required />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label asp-for="LastName" class="control-label"></label>
-                        <input asp-for="LastName" type="text" class="form-control" required />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Salario</label>
-                        <input type="text" class="form-control" id="IdSalary" name="Salary" required />
-                    </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <select class="form-control" id="IdGender" name="IdGender">
+                        <option value="0">Femenino</option>
+                        <option value="1">Masculino</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
                 </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label asp-for="BirthDate" class="control-label"></label>
-                        <input asp-for="BirthDate" type="date" class="form-control" required />
-                        <span asp-validation-for="BirthDate" class="text-danger"></span>
-                    </div>
+                <div class="form-group">
+                    <label asp-for="TypeContactId" class="control-label"></label>
+                    @await Component.InvokeAsync("Position")
+                    <span asp-validation-for="TypeContact" class="text-danger"></span>
                 </div>
             </div>
-            <hr />
-            <div class="row">
-                <div class="col-sm-12">
-                    <h5>Informacion de Contacto y Ubicación</h5>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" type="text" class="form-control" required />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Salario:*</label>
+                    <input type="number" class="form-control" id="IdSalary" name="Salary" required />
                 </div>
             </div>
-            <br />
-        </form>
-    </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="BirthDate" class="control-label"></label>
+                    <input asp-for="BirthDate" type="date" class="form-control" required />
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TypeContactId" class="control-label"></label>
+                    @await Component.InvokeAsync("TypeContact")
+                    <span asp-validation-for="TypeContact" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-sm-12">
+                <h5>Información de Contacto</h5>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" type="email" class="form-control" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="Cellphone" class="control-label"></label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">+57</div>
+                        </div>
+                        <input asp-for="Cellphone" type="number" class="form-control validateLength" minlength="7" maxlength="7" required />
+                    </div>
+                    <span asp-validation-for="Cellphone" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label asp-for="Telephone" class="control-label"></label>      
+                    <input asp-for="Telephone" type="number" class="form-control" required />
+                    <span asp-validation-for="Telephone" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-check form-switch">
+                    <input asp-for="AuthorizedStore" class="form-check-input" type="checkbox" />
+                    <label asp-for="AuthorizedStore" class="form-check-label" for="flexSwitchCheckDefault"></label>
+                </div>
+                <div class="form-check form-switch">
+                    <input asp-for="AuthorizedOrders" class="form-check-input" type="checkbox" />
+                    <label asp-for="AuthorizedOrders" class="form-check-label" for="flexSwitchCheckDefault"></label>
+                </div>
+                <div class="form-check form-switch">
+                    <input asp-for="MailUserAccess" class="form-check-input" type="checkbox" checked />
+                    <label asp-for="MailUserAccess" class="form-check-label" for="flexSwitchCheckDefault"></label>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <br />
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <span tabindex="0" data-toggle="tooltip" title="Por favor verificar que todos los campos contengan información">
+                        <input id="btnSubmit" type="submit" value="Crear Empleado" class="btn btn-primary btn-lg btn-block" />
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 

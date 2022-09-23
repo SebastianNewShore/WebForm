@@ -69,3 +69,15 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.validateLength {
+    border: 2px solid currentcolor;
+}
+
+.validateLength:invalid {
+        border: 2px dashed red;
+    }
+
+.validateLength:invalid:focus {
+    background-image: linear-gradient(pink, lightgreen);
+}
