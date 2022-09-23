@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<WebForms.Models.TypeContact>
-<select class="form-control" id="IdTypeContact" name="IdTypeContact" required>
+<select class="form-control" id="TypeContactId" name="TypeContactId" required>
     @foreach (var item in Model)
     {
         <option value="@item.TypeContactId">@item.TypeContactName</option>
