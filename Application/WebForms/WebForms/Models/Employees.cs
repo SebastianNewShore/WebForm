@@ -19,7 +19,7 @@ namespace WebForms.Models
 
         [Required(ErrorMessage = "El nombre es obligatorio")]
         [Display(Name = "Nombre:*")]
-        [StringLength(5, ErrorMessage = "El {0} debe ser de al menos {2} y maximo {1} caracteres", MinimumLength = 15)]
+        [StringLength(15, ErrorMessage = "El {0} debe ser de al menos {2} y maximo {1} caracteres", MinimumLength = 5)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "El apellido es obligatorio")]
