@@ -5,9 +5,9 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace WebForm.Models
+namespace WebForms.Models
 {
-    public partial class DeptManager
+    public partial class DeptEmp
     {
         public int EmpNo { get; set; }
         public string DeptNo { get; set; }

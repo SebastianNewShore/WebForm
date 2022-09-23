@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace WebForm.Models
+namespace WebForms.Models
 {
     public partial class dbWebFormContext : DbContext
     {

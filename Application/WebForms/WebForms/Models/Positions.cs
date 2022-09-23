@@ -5,17 +5,17 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace WebForm.Models
+namespace WebForms.Models
 {
-    public partial class TypeContact
+    public partial class Positions
     {
-        public TypeContact()
+        public Positions()
         {
             Employees = new HashSet<Employees>();
         }
 
-        public int TypeContactId { get; set; }
-        public string TypeContactName { get; set; }
+        public int PositionId { get; set; }
+        public string PositionName { get; set; }
 
         public virtual ICollection<Employees> Employees { get; set; }
     }
